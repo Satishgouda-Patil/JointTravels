@@ -16,6 +16,7 @@ export const createBooking = async (req, res) => {
       totalPrice,
     } = req.body;
 
+    console.log("details" +req.body );
     const userId = req.userId;
 
     if (
