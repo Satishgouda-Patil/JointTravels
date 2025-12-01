@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+const backendUrl1 = import.meta.env.VITE_BACKEND_URL;
 
 const LoginPage = () => {
   const { backendUrl, setToken, setUser } = useContext(AppContext);
@@ -27,12 +28,14 @@ const LoginPage = () => {
       // Determine whether it's login or register
       if (isLogin) {
         // Update login route to match backend API
-        response = await axios.post(`http://localhost:4000/api/user/login`, {
+        response = await axios.post(`${backendUrl1}/api/user/login`, {
+
           email,
           password,
         });
       } else {
-        response = await axios.post(`http://localhost:4000/api/user/register`, {
+        response = await axios.post(`${backendUrl1}/api/user/register`, {
+
           name,
           email,
           password,
